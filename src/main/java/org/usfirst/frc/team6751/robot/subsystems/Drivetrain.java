@@ -1,7 +1,7 @@
 package org.usfirst.frc.team6751.robot.subsystems;
 
 import org.usfirst.frc.team6751.robot.RobotMap;
-import org.usfirst.frc.team6751.robot.commands.DriveTeleOp;
+import org.usfirst.frc.team6751.robot.commands.Teleoperative.DriveTeleOp;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;

@@ -4,9 +4,9 @@ package org.usfirst.frc.team6751.robot;
 import com.team6751.util.LogitechOp;
 import com.team6751.util.PS4Gamepad;
 
-import org.usfirst.frc.team6751.robot.commands.ArmCommand;
-import org.usfirst.frc.team6751.robot.commands.ClimberCommand;
-import org.usfirst.frc.team6751.robot.commands.RollerCommand;
+import org.usfirst.frc.team6751.robot.commands.Teleoperative.ArmCommand;
+import org.usfirst.frc.team6751.robot.commands.Teleoperative.ClimberCommand;
+import org.usfirst.frc.team6751.robot.commands.Teleoperative.RollerCommand;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 

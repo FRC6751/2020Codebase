@@ -5,22 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6751.robot.commands;
+package org.usfirst.frc.team6751.robot.commands.Teleoperative;
 
 import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LowerArmCommand extends Command {
-  public LowerArmCommand() {
-    requires(Robot.arm);
+public class ClimberCommand extends Command {
+  private boolean goingUp = false;
+
+  public ClimberCommand(boolean goingUp) {
+    this.goingUp = goingUp;
+    requires(Robot.climber);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.arm.lowerArm();
-    this.setTimeout(3);
+    if (goingUp) {
+      Robot.climber.raiseBar();
+    } else {
+      Robot.climber.lowerBar();
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -31,19 +37,19 @@ public class LowerArmCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return this.isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.arm.stopArm();
+    Robot.climber.stopBar();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
+    end();
   }
 }

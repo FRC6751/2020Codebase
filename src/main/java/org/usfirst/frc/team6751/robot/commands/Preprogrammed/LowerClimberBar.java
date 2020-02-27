@@ -5,28 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6751.robot.commands;
+package org.usfirst.frc.team6751.robot.commands.Preprogrammed;
 
 import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RollerCommand extends Command {
-  private boolean increaseSpeed = false;
-
-  public RollerCommand(boolean increaseSpeed) {
-    this.increaseSpeed = increaseSpeed;
-    requires(Robot.roller);
+public class LowerClimberBar extends Command {
+  public LowerClimberBar() {
+    requires(Robot.climber);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (increaseSpeed) {
-      Robot.roller.increaseRollerSpeed();;
-    } else {
-      Robot.roller.decreaseRollerSpeed();;
-    }
+    Robot.climber.lowerBar();
+    this.setTimeout(3);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,19 +31,19 @@ public class RollerCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return this.isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.roller.stopRoller();
+    Robot.climber.stopBar();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
+    this.end();
   }
 }

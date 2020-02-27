@@ -5,22 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6751.robot.commands;
+package org.usfirst.frc.team6751.robot.commands.Teleoperative;
 
 import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RaiseArmCommand extends Command {
-  public RaiseArmCommand() {
-    requires(Robot.arm);
+public class RollerCommand extends Command {
+  private boolean increaseSpeed = false;
+
+  public RollerCommand(boolean increaseSpeed) {
+    this.increaseSpeed = increaseSpeed;
+    requires(Robot.roller);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.arm.raiseArm();
-    this.setTimeout(3);
+    if (increaseSpeed) {
+      Robot.roller.increaseRollerSpeed();;
+    } else {
+      Robot.roller.decreaseRollerSpeed();;
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -31,19 +37,19 @@ public class RaiseArmCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return this.isTimedOut();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.arm.stopArm();
+    Robot.roller.stopRoller();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    this.end();
+    end();
   }
 }

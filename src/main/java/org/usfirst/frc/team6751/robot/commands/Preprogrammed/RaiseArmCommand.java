@@ -5,21 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team6751.robot.commands;
+package org.usfirst.frc.team6751.robot.commands.Preprogrammed;
 
 import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class LowerClimberBar extends Command {
-  public LowerClimberBar() {
-    requires(Robot.climber);
+public class RaiseArmCommand extends Command {
+  public RaiseArmCommand() {
+    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.climber.lowerBar();
+    Robot.arm.raiseArm();
     this.setTimeout(3);
   }
 
@@ -37,7 +37,7 @@ public class LowerClimberBar extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climber.stopBar();
+    Robot.arm.stopArm();
   }
 
   // Called when another command which requires one or more of the same

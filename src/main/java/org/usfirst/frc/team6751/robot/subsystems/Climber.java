@@ -15,28 +15,36 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class Hatch extends Subsystem {
-	public Spark hatchMotor = new Spark(RobotMap.hatchMotor);
+public class Climber extends Subsystem {
+  protected Spark climberMotor = new Spark(RobotMap.climberMotor);
 
-	public final double HATCH_UP_SPEED = -.5;
-	public final double HATCH_DOWN_SPEED = .5;
-	public final double STOP_HATCH = 0;
+  public final double CLIMB_LOWER_SPEED = -.2;
+  public final double CLIMB_RAISE_SPEED = .2;
 
-	public void hatchMotorUp(double speed) {
-		hatchMotor.set(speed);
-	}
+  public final double STOP_CLIMB = 0;
 
-	public void hatchMotorDown(double speed) {
-		hatchMotor.set(speed);
-	}
+  public void raiseBar() {
+      climberMotor.set(CLIMB_RAISE_SPEED);
+  }
 
-	public void stopHatch(){
-		hatchMotor.set(0);
-	}
+  public void lowerBar() {
+      climberMotor.set(CLIMB_LOWER_SPEED);
+  }
+
+  public void stopBar() {
+      climberMotor.set(STOP_CLIMB);
+  }
+
+  public void stopLift(double speed) {
+    climberMotor.set(speed);
+  }
+
+  public void rampMotorDown(double speed) {
+    climberMotor.set(speed);
+  }
 
   @Override
   public void initDefaultCommand() {
-		
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }

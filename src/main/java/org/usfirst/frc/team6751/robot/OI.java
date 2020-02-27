@@ -4,8 +4,9 @@ package org.usfirst.frc.team6751.robot;
 import com.team6751.util.LogitechOp;
 import com.team6751.util.PS4Gamepad;
 
-import org.usfirst.frc.team6751.robot.commands.Ramp;
-import org.usfirst.frc.team6751.robot.commands.hatchMotor;
+import org.usfirst.frc.team6751.robot.commands.ArmCommand;
+import org.usfirst.frc.team6751.robot.commands.ClimberCommand;
+import org.usfirst.frc.team6751.robot.commands.RollerCommand;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -17,15 +18,7 @@ public class OI {
 	// Calls the Gamepad Classes: Defines gp and cp for the robot
 	private PS4Gamepad gp = new PS4Gamepad(RobotMap.pilot);
 	private LogitechOp cp = new LogitechOp(RobotMap.coPilot);
-
-	// Returns Controller Data for use with certain Methods
-	public PS4Gamepad getGamepad() {
-		return gp;
-	}
-
-	public LogitechOp getCopad() {
-		return cp;
-	}
+	// private final Operation operation = new Operation();
 
 	// Creates a Button Object from the Controllers
 	// Pilot
@@ -67,16 +60,31 @@ public class OI {
 	Button cRB = cp.getRB();
 
 	public OI() {
+		boolean increaseSpeed = true;
+		R1.whileHeld(new ArmCommand(increaseSpeed));
+		L1.whileHeld(new RollerCommand(increaseSpeed));
+		buttonTriangle.whileHeld(new ClimberCommand(increaseSpeed));
 
-		//Hatch
-		R1.whileHeld(new hatchMotor(Robot.hatch.HATCH_DOWN_SPEED));
-		R2.whileHeld(new hatchMotor(Robot.hatch.HATCH_UP_SPEED));
-		
-		L1.whileHeld(new Ramp(Robot.climb.RAMP_LOWER_SPEED));
-		L2.whileHeld(new Ramp(Robot.climb.RAMP_RAISE_SPEED));
-		
-
-
+		increaseSpeed = false;
+		R2.whileHeld(new ArmCommand(increaseSpeed));
+		L2.whileHeld(new RollerCommand(increaseSpeed));
+		buttonX.whileHeld(new ClimberCommand(increaseSpeed));
 	}
-	
+
+	// Returns Controller Data for use with certain Methods
+	protected PS4Gamepad getGamepad() {
+		return gp;
+	}
+
+	public double getSpeed() {
+		return gp.getLeftYAxis();
+	}
+
+	public double getRotation() {
+		return gp.getRightXAxis();
+	}
+
+	protected LogitechOp getCopad() {
+		return cp;
+	}
 }

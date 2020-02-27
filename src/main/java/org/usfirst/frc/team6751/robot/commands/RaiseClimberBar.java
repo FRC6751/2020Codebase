@@ -11,46 +11,39 @@ import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class stopHatch extends Command {
-  private double speed;
-
-  public stopHatch(double speed) {
-    this.speed = speed;
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+public class RaiseClimberBar extends Command {
+  public RaiseClimberBar() {
+    requires(Robot.climber);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.climber.raiseBar();
+    this.setTimeout(3);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.hatch.stopHatch();
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return this.isTimedOut();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.hatch.stopHatch();
-
-    
+    Robot.climber.stopBar();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.hatch.stopHatch();
-
+    this.end();
   }
 }

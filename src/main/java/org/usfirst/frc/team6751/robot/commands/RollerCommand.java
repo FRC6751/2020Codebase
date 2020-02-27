@@ -11,20 +11,22 @@ import org.usfirst.frc.team6751.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Ramp extends Command {
-private double speed;
+public class RollerCommand extends Command {
+  private boolean increaseSpeed = false;
 
-  public Ramp(double speed) {
-    this.speed = speed;
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+  public RollerCommand(boolean increaseSpeed) {
+    this.increaseSpeed = increaseSpeed;
+    requires(Robot.roller);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.climb.rampMotorDown(speed);
-
+    if (increaseSpeed) {
+      Robot.roller.increaseRollerSpeed();;
+    } else {
+      Robot.roller.decreaseRollerSpeed();;
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -41,13 +43,13 @@ private double speed;
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.climb.stopLift(-.05);
+    Robot.roller.stopRoller();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.climb.stopLift(-.05);
+    end();
   }
 }

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team6751.robot.subsystems;
 
-import com.team6751.util.PS4Gamepad;
-
 import org.usfirst.frc.team6751.robot.RobotMap;
 import org.usfirst.frc.team6751.robot.commands.DriveTeleOp;
 
@@ -16,72 +14,20 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class Drivetrain extends Subsystem {
 
-	public Spark leftDriveMotor = new Spark(RobotMap.leftDriveMotor);
-	public Spark rightDriveMotor = new Spark(RobotMap.rightDriveMotor);
+	protected Spark leftDriveMotor = new Spark(RobotMap.leftDriveMotor);
+	protected Spark rightDriveMotor = new Spark(RobotMap.rightDriveMotor);
 
 	public SpeedControllerGroup leftDriveTrain = new SpeedControllerGroup(leftDriveMotor);
 	public SpeedControllerGroup rightDriveTrain = new SpeedControllerGroup(rightDriveMotor);
 
 	public DifferentialDrive drivetrain = new DifferentialDrive(rightDriveTrain, leftDriveTrain);
 
-	// public Encoder driveEncoder = new Encoder(RobotMap.driveEncoderA,
-	// RobotMap.driveEncoderB);
+	protected final double speedAdjustment = -0.95;
+	protected final double rotationAdjustment = 0.7;
 
-	public void motorSafety(boolean enabled) {
-		leftDriveMotor.setSafetyEnabled(enabled);
-		rightDriveMotor.setSafetyEnabled(enabled);
-
-	}
-
-	public void driveTeleOp(PS4Gamepad gp) {
+	public void driveArcade(double speed, double rotation) {
 		// Tele-Op Driving
-		drivetrain.arcadeDrive(gp.getLeftYAxis() * -.95, gp.getRightXAxis() * .7);
-	}
-
-	public void driveForward() {
-		for (int x = 1 ; x < 5; x++){
-		int ramp = 4;
-		leftDriveMotor.set(.5/ramp);
-		rightDriveMotor.set(.5/ramp);
-		ramp--;
-		Timer.delay(.15);
-		}
-	}
-		
-
-	
-
-	public void driveBackward() {
-		for (int x = 1 ; x < 5; x++){
-			int ramp = 4;
-			leftDriveMotor.set(-.5/ramp);
-			rightDriveMotor.set(-.5/ramp);
-			ramp--;
-			Timer.delay(.15);
-		}
-
-	}
-
-	public void turnRightTank() {
-		leftDriveMotor.set(-.75);
-		rightDriveMotor.set(0);
-
-	}
-
-	public void turnLeftTank() {
-		leftDriveMotor.set(0);
-		rightDriveMotor.set(-.75);
-
-	}
-
-	public void turnLeft() {
-		leftDriveMotor.set(-.75);
-		rightDriveMotor.set(.75);
-	}
-
-	public void turnRight() {
-		leftDriveMotor.set(.75);
-		rightDriveMotor.set(-.75);
+		drivetrain.arcadeDrive(speed * speedAdjustment, rotation * rotationAdjustment);
 	}
 
 	public void stopDrive() {
@@ -91,5 +37,9 @@ public class Drivetrain extends Subsystem {
 
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveTeleOp());
+	}
+
+	public void test() {
+		System.out.println("Buttons Work");
 	}
 }

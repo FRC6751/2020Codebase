@@ -14,13 +14,20 @@ package org.usfirst.frc.team6751.robot;
  * floating around.
  */
 public class RobotMap {
+	// User Interface Controllers
 	public static final int pilot = 0;
 	public static final int coPilot = 1;
 
 	// Drivetrain motors
 	public static int rightDriveMotor = 0;
 	public static int leftDriveMotor = 1;
-	public static int liftMotor = 4;
-	public static int hatchMotor = 5;
 
+	// Motor for Arm
+	public static int armMotor = 3;
+
+	// Motor for Lift/Climb
+	public static int climberMotor = 4;
+
+	// Motor for Intake
+	public static int rollerMotor = 5;	
 }

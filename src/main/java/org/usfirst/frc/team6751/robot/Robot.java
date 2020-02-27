@@ -29,6 +29,7 @@ public class Robot extends TimedRobot {
 	// Roller Subsystem 5
 	public static final Roller roller = new Roller();
 
+	// Sequential Commands to use for Autonomous Robot
 	protected AutonomousCommands autoCmds = new AutonomousCommands();
 
 	@Override

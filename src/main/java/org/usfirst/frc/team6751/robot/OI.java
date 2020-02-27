@@ -18,62 +18,26 @@ public class OI {
 	// Calls the Gamepad Classes: Defines gp and cp for the robot
 	private PS4Gamepad gp = new PS4Gamepad(RobotMap.pilot);
 	private LogitechOp cp = new LogitechOp(RobotMap.coPilot);
-	// private final Operation operation = new Operation();
 
-	// Creates a Button Object from the Controllers
-	// Pilot
-	Button buttonTriangle = gp.getButtonTriangle();
+	Button climberUpButton = gp.getButtonTriangle();
+	Button climberDownButton = gp.getButtonX();
 
-	Button buttonSquare = gp.getButtonSquare();
+	Button rollerForwardButton = gp.getL1();
+	Button rollerBackwardButton = gp.getL2();
 
-	Button buttonCircle = gp.getButtonCircle();
-
-	Button buttonX = gp.getButtonX();
-
-	Button buttonOptions = gp.getOptionsButton();
-
-	Button buttonShare = gp.getShareButton();
-
-	Button buttonStart = gp.getStartButton();
-
-	Button buttonPad = gp.getButtonPad();
-
-	Button L1 = gp.getL1();
-
-	Button R1 = gp.getR1();
-
-	Button L2 = gp.getL2();
-
-	Button R2 = gp.getR2();
-
-	Button L3 = gp.getL3();
-
-	Button R3 = gp.getR3();
-
-	// CoPilot
-	Button cbuttonA = cp.getButtonA();
-	Button cbuttonB = cp.getButtonB();
-	Button cbuttonY = cp.getButtonY();
-	Button cbuttonX = cp.getButtonX();
-	Button cbuttonStart = cp.getStartButton();
-	Button cLB = cp.getLB();
-	Button cRB = cp.getRB();
+	Button armUpButton = gp.getR1();
+	Button armDownButton = gp.getR2();
 
 	public OI() {
 		boolean increaseSpeed = true;
-		R1.whileHeld(new ArmCommand(increaseSpeed));
-		L1.whileHeld(new RollerCommand(increaseSpeed));
-		buttonTriangle.whileHeld(new ClimberCommand(increaseSpeed));
+		armUpButton.whileHeld(new ArmCommand(increaseSpeed));
+		rollerForwardButton.whileHeld(new RollerCommand(increaseSpeed));
+		climberUpButton.whileHeld(new ClimberCommand(increaseSpeed));
 
 		increaseSpeed = false;
-		R2.whileHeld(new ArmCommand(increaseSpeed));
-		L2.whileHeld(new RollerCommand(increaseSpeed));
-		buttonX.whileHeld(new ClimberCommand(increaseSpeed));
-	}
-
-	// Returns Controller Data for use with certain Methods
-	protected PS4Gamepad getGamepad() {
-		return gp;
+		armDownButton.whileHeld(new ArmCommand(increaseSpeed));
+		rollerBackwardButton.whileHeld(new RollerCommand(increaseSpeed));
+		climberDownButton.whileHeld(new ClimberCommand(increaseSpeed));
 	}
 
 	public double getSpeed() {
@@ -82,9 +46,5 @@ public class OI {
 
 	public double getRotation() {
 		return gp.getRightXAxis();
-	}
-
-	protected LogitechOp getCopad() {
-		return cp;
 	}
 }

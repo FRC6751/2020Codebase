@@ -1,4 +1,4 @@
-package org.usfirst.frc.team6751.robot.commands.Teleoperative;
+package org.usfirst.frc.team6751.robot.commands.teleoperative;
 
 import edu.wpi.first.wpilibj.command.Command;
 

@@ -1,7 +1,7 @@
 
 package org.usfirst.frc.team6751.robot;
 
-import org.usfirst.frc.team6751.robot.commands.Autonomous.AutonomousCommands;
+import org.usfirst.frc.team6751.robot.commands.autonomous.AutonomousCommands;
 import org.usfirst.frc.team6751.robot.subsystems.Arm;
 import org.usfirst.frc.team6751.robot.subsystems.Climber;
 import org.usfirst.frc.team6751.robot.subsystems.Drivetrain;

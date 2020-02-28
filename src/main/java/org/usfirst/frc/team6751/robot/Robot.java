@@ -14,9 +14,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Robot extends TimedRobot {
-	// Operator Interface (controllers)
-	public static OI oi = new OI();
-
 	// Drivetrain Subsystem 0 and 1
 	public static final Drivetrain drivetrain = new Drivetrain();
 
@@ -29,11 +26,16 @@ public class Robot extends TimedRobot {
 	// Roller Subsystem 5
 	public static final Roller roller = new Roller();
 
+	// Operator Interface (controllers)
+	public static OI oi;
+
 	// Sequential Commands to use for Autonomous Robot
 	protected AutonomousCommands autoCmds = new AutonomousCommands();
 
 	@Override
 	public void robotInit() {
+		oi = new OI();
+
 		// Camera Setup
 		UsbCamera usbCamera = CameraServer.getInstance().startAutomaticCapture();
 		usbCamera.setVideoMode(VideoMode.PixelFormat.kYUYV, 640, 360, 60);

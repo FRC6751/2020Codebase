@@ -10,11 +10,11 @@ package org.usfirst.frc.team6751.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutonomousCommands extends CommandGroup {
-  private final double driveSpeed    = 0.4;
-  private final double driveRotation = 0.0;
-  private final int    driveSeconds  = 6;
+  private final double driveSpeed    = -0.7;
+  private final double driveRotation = 0.15;
+  private final int    driveSeconds  = 7;
 
-  private final int    rollerSeconds = 12;
+  private final int    rollerSeconds = 9;
   /**
    * Add your docs here.
    */

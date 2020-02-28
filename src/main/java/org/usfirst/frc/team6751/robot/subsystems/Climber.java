@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Climber extends Subsystem {
   protected Spark climberMotor = new Spark(RobotMap.climberMotor);
 
-  public final double CLIMB_LOWER_SPEED = -.2;
-  public final double CLIMB_RAISE_SPEED = .2;
+  public final double CLIMB_LOWER_SPEED = -.6;
+  public final double CLIMB_RAISE_SPEED = .6;
 
   public final double STOP_CLIMB = 0;
 

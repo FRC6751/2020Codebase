@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Arm extends Subsystem {
 	protected Spark armMotor = new Spark(RobotMap.armMotor);
 
-	protected final double ARM_LOWER_SPEED = -.4;
-	protected final double ARM_RAISE_SPEED = .2;
+	protected final double ARM_LOWER_SPEED = -.6;
+	protected final double ARM_RAISE_SPEED = .4;
 	protected final double ARM_STOP = 0;
 
 	protected final double RAISE_LOWER_SPEED = .2;

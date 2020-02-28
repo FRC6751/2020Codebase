@@ -22,7 +22,7 @@ public class RollerAutonomous extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.roller.decreaseRollerSpeed();
+    Robot.roller.increaseRollerSpeed();
     setTimeout(this.timeoutSeconds);
   }
 

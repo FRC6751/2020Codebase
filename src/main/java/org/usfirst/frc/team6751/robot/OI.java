@@ -41,7 +41,7 @@ public class OI {
 	}
 
 	public double getSpeed() {
-		return gp.getLeftYAxis();
+		return -gp.getLeftYAxis();
 	}
 
 	public double getRotation() {

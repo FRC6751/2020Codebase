@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Roller extends Subsystem {
 	protected Spark rollerMotor = new Spark(RobotMap.rollerMotor);
 
-	protected final double INTAKE_LOWER_SPEED = -.4;
-	protected final double INTAKE_RAISE_SPEED = .2;
+	protected final double INTAKE_LOWER_SPEED = -.6;
+	protected final double INTAKE_RAISE_SPEED = .6;
 
 	protected final double INTAKE_SPEED = .7;
 

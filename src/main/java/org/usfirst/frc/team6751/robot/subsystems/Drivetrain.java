@@ -21,7 +21,7 @@ public class Drivetrain extends Subsystem {
 
 	public DifferentialDrive drivetrain = new DifferentialDrive(rightDriveTrain, leftDriveTrain);
 
-	protected final double speedAdjustment = 0.70;
+	protected final double speedAdjustment = -0.70;
 	protected final double rotationAdjustment = 0.60;
 
 	public void driveArcade(double speed, double rotation) {

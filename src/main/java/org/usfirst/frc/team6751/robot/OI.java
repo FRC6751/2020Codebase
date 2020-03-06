@@ -30,12 +30,12 @@ public class OI {
 
 	public OI() {
 		boolean increaseSpeed = true;
-		armUpButton.whileHeld(new ArmCommand(increaseSpeed));
+		armDownButton.whileHeld(new ArmCommand(increaseSpeed));
 		rollerForwardButton.whileHeld(new RollerCommand(increaseSpeed));
 		climberUpButton.whileHeld(new ClimberCommand(increaseSpeed));
 
 		increaseSpeed = false;
-		armDownButton.whileHeld(new ArmCommand(increaseSpeed));
+		armUpButton.whileHeld(new ArmCommand(increaseSpeed));
 		rollerBackwardButton.whileHeld(new RollerCommand(increaseSpeed));
 		climberDownButton.whileHeld(new ClimberCommand(increaseSpeed));
 	}
